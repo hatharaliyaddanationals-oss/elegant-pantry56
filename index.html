@@ -259,12 +259,120 @@
       background: #FEFCF5;
     }
 
+    /* YouTube & extra button styles */
+    .social-links {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+    .youtube-btn {
+      background: #FF0000;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: none;
+      cursor: pointer;
+    }
+    .youtube-btn:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(255,0,0,0.25);
+    }
+    .whatsapp-btn {
+      background: var(--blue);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .whatsapp-btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+    .contact-info p {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .contact-info strong {
+      min-width: 95px;
+      color: var(--blue);
+    }
     @media (max-width: 680px) {
       .container { padding: 0 18px; }
       .nav-btn { padding: 6px 16px; font-size: 0.85rem; }
       .logo-area h1 { font-size: 1.8rem; }
       .items-grid { gap: 20px; }
       .about-card, .contact-card { padding: 28px 20px; }
+      .contact-info p { flex-direction: column; gap: 4px; }
+    }
+    /* Bullet styles for about page */
+    .about-section {
+      margin: 28px 0 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+      border-left: 4px solid var(--gold);
+      padding-left: 18px;
+    }
+    .bullet-list {
+      list-style: none;
+      padding-left: 20px;
+    }
+    .bullet-list li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 28px;
+    }
+    .bullet-list li::before {
+      content: "✦";
+      color: var(--gold);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .gold-highlight {
+      color: var(--gold-dark);
+      font-weight: 700;
+    }
+    .sub-bullet {
+      list-style: none;
+      margin-top: 6px;
+      margin-left: 24px;
+    }
+    .sub-bullet li {
+      padding-left: 20px;
+      position: relative;
+    }
+    .sub-bullet li::before {
+      content: "➤";
+      color: var(--blue-light);
+      font-size: 0.8rem;
+      left: 0;
+      top: 0;
     }
   </style>
 </head>
@@ -298,9 +406,8 @@
     </div>
   </div>
 
-  <!-- ================= ITEMS PAGE (NO CATEGORY FILTERS, ALL ITEMS IN SINGLE GRID) ================= -->
+  <!-- ================= ITEMS PAGE (ALL ITEMS SINGLE GRID) ================= -->
   <div id="itemsPage" class="page">
-    <!-- Removed category tabs: only all items together -->
     <div id="itemsContainer" class="items-grid">
       <div class="no-items">Loading elegant collection...</div>
     </div>
@@ -310,15 +417,13 @@
     </div>
   </div>
 
-
-
-  <!-- ================= ABOUT PAGE (ENHANCED with Board Categories & Countries) ================= -->
+  <!-- ================= ABOUT PAGE (Board Categories & Countries) ================= -->
   <div id="aboutPage" class="page">
     <div class="about-card">
       <h2>About Elegant Pantry & Solution</h2>
       <p style="font-size:1.05rem; margin-bottom:24px;">Our elegant pantry & solution business offers not only premium pantry and kitchen items but also high-quality engineered board solutions for modern interiors. We merge style, durability, and function — inspired by gold elegance and blue serenity.</p>
       
-      <!-- Board categories section: main bullet list -->
+      <!-- Board categories section -->
       <div class="about-section">
         <div class="section-title">📋 Board Categories</div>
         <ul class="bullet-list">
@@ -328,7 +433,7 @@
         </ul>
       </div>
 
-      <!-- Important Countries as a sub-category under board categories (second bullet hierarchy) -->
+      <!-- Important Countries with sub bullets -->
       <div class="about-section">
         <div class="section-title">🌍 Important Partner Countries</div>
         <ul class="bullet-list">
@@ -351,56 +456,65 @@
             </ul>
           </li>
         </ul>
-        <!-- subtle note: international collaboration -->
         <p style="margin-top: 16px; font-size: 0.9rem; background: #F6F2EA; padding: 12px 20px; border-radius: 32px;">
           🌟 <strong>Global excellence:</strong> Our boards are sourced or inspired by techniques from Italy, China, and India — ensuring world-class quality for your pantry & living spaces.
         </p>
       </div>
 
-      <!-- Additional elegant message (keep original vibe) -->
       <div style="margin-top: 28px; border-top: 1px solid #E8DEC9; padding-top: 24px;">
         <p style="color: #4A5B6E;">✨ From pantry shelving to kitchen cabinetry, we offer tailored board solutions that blend beauty with strength. Whether you need <strong>Eco Board</strong>, <strong>HDF Melamine</strong>, or <strong>AGT Board</strong>, our international partnerships (Italy, China, India) guarantee superior quality.</p>
       </div>
     </div>
-  </div
+  </div>
 
-  <!-- ================= CONTACT PAGE ================= -->
+  <!-- ================= CONTACT PAGE (ADDED YOUTUBE CHANNEL LINK) ================= -->
   <div id="contactPage" class="page">
     <div class="contact-card">
       <h2>Connect With Us</h2>
       <div class="contact-info">
         <p><strong>📍 Email:</strong> elegantpantry@gmail.com</p>
-        <p><strong>📞  WhatsApp:</strong> +94 77 918 6182</p>   
-	<p><strong>📞 Phone :</strong> 076 775 6811</p>
+        <p><strong>📞 WhatsApp:</strong> +94 77 918 6182</p>   
+        <p><strong>📞 Phone :</strong> 076 775 6811</p>
         <p><strong>🏠 Address:</strong> Elegant Pantry & solution, 61/5 awasa RD, KIRIGAMPAMUNUWA,POLGASOWITA</p>
         <p><strong>⏰ Hours:</strong> Mon - Sat: 8:00 AM to 7:00 PM</p>
-        <div style="margin-top:32px;"><a href="https://wa.me/94779186182" target="_blank" style="background:var(--blue); color:white; padding:12px 28px; border-radius:60px; text-decoration:none; display:inline-block; font-weight:600;">Chat on WhatsApp →</a></div>
+        
+        <!-- Social row: YouTube + WhatsApp quick chat -->
+        <div class="social-links">
+          <a href="https://wa.me/94779186182" target="_blank" class="whatsapp-btn" style="background:#1E4A76;">💬 Chat on WhatsApp</a>
+          <a href="https://www.youtube.com/@ELEGANTPANTRYSOLUTION" target="_blank" class="youtube-btn">
+            ▶️ Subscribe on YouTube
+          </a>
+        </div>
+        <!-- additional note: youtube channel mentioned inline as requested (YouTube link inside brackets style but actual button) -->
+        <p style="margin-top: 24px; font-size: 0.85rem; background: #F9F6EF; padding: 10px 16px; border-radius: 28px;">
+          🎬 Explore recipes, pantry tips & kitchen tours on our official YouTube channel: 
+          <a href="https://www.youtube.com/@ELEGANTPANTRYSOLUTION" target="_blank" style="color: var(--gold-dark); font-weight: 600; text-decoration: underline;">Elegant Pantry & Solution</a>
+        </p>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  © 2026 ELEGANT PANTRY & SOLUTION— Gold & Blue Elegance. Luxury  pantry essentials.
+  © 2026 ELEGANT PANTRY & SOLUTION — Gold & Blue Elegance. Luxury pantry essentials.
 </footer>
 
 <script>
   // ----------------------------------------------
-  // ELEGANT PANTRY - ALL PRODUCTS (NO CATEGORY FILTERS)
-  // Generates 30 products with image names 1.jpg through 30.jpg
-  // Each image corresponds to your desktop photos renamed 1-30.
+  // ELEGANT PANTRY - 30 PRODUCTS (NO CATEGORY)
+  // Each images: 1.jpg ... 30.jpg
+  // WhatsApp number +94779186182
   // ----------------------------------------------
   const WHATSAPP_NUMBER = "94779186182";
 
-  // Helper: generate 30 elegant product titles & descriptions (rich variety)
   function generateProducts() {
     const productNames = [
-      "PROUDUCT 1", "PROUDUCT 2", "PROUDUCT 3", "PROUDUCT 4", "PROUDUCT 5",
-      "PROUDUCT 6", "PROUDUCT 7", "PROUDUCT 8 ", "PROUDUCT 9", "PROUDUCT 10",
-      "PROUDUCT 11", "PROUDUCT 12", "PROUDUCT 13", "PROUDUCT 14", "PROUDUCT 15",
-      "PROUDUCT 16", "PROUDUCT 17", "PROUDUCT 18", "PROUDUCT 19", "PROUDUCT 20",
-      "PROUDUCT 21", "PROUDUCT 22", "PROUDUCT 23", "PROUDUCT 24", "PROUDUCT 25",
-      "PROUDUCT 26", "PROUDUCT 27", "PROUDUCT 28", "PROUDUCT 29", "PROUDUCT 30"
+      "PRODUCT 1", "PRODUCT 2", "PRODUCT 3", "PRODUCT 4", "PRODUCT 5",
+      "PRODUCT 6", "PRODUCT 7", "PRODUCT 8", "PRODUCT 9", "PRODUCT 10",
+      "PRODUCT 11", "PRODUCT 12", "PRODUCT 13", "PRODUCT 14", "PRODUCT 15",
+      "PRODUCT 16", "PRODUCT 17", "PRODUCT 18", "PRODUCT 19", "PRODUCT 20",
+      "PRODUCT 21", "PRODUCT 22", "PRODUCT 23", "PRODUCT 24", "PRODUCT 25",
+      "PRODUCT 26", "PRODUCT 27", "PRODUCT 28", "PRODUCT 29", "PRODUCT 30"
     ];
     
     const descList = [
@@ -436,28 +550,24 @@
       "Stoneware butter dish with wooden lid, keeps butter fresh."
     ];
     
-    // create exactly 30 products, each mapped to image "i.jpg" (1 to 30)
     const products = [];
     for (let i = 1; i <= 30; i++) {
-      // cycle titles and descriptions gracefully
       const titleIndex = (i - 1) % productNames.length;
       const descIndex = (i - 1) % descList.length;
       let title = productNames[titleIndex];
       let baseDesc = descList[descIndex];
-      // add little unique variation
-      const customDesc = `${baseDesc} ✨ Elegant Pantry & solutions. Perfect for gold & blue style .`;
+      const customDesc = `${baseDesc} ✨ Elegant Pantry & solutions. Perfect for gold & blue style.`;
       products.push({
         id: i,
         title: title,
         description: customDesc,
-        image: `${i}.jpg`,        // uses 1.jpg, 2.jpg, ... 30.jpg from your desktop folder
-        // no category field anymore (all items together)
+        image: `${i}.jpg`,
       });
     }
     return products;
   }
 
-  let allProducts = generateProducts();     // 30 items with local images 1.jpg - 30.jpg
+  let allProducts = generateProducts();
   let itemsContainer = document.getElementById("itemsContainer");
   const homePage = document.getElementById("homePage");
   const itemsPage = document.getElementById("itemsPage");
@@ -465,48 +575,11 @@
   const contactPage = document.getElementById("contactPage");
   const navBtns = document.querySelectorAll(".nav-btn");
 
-  // WhatsApp handler
   function sendWhatsApp(productTitle, productId) {
     const message = `Hello Elegant Pantry! 👋 I'm interested in purchasing *${productTitle}* (Item #${productId}). Please share price, availability, and payment options. Thank you! 🌟`;
     const encodedMsg = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
     window.open(whatsappUrl, "_blank");
-  }
-
-  // Render all 30 items in a single grid (no filtering)
-  function renderAllItems() {
-    if (!allProducts.length) {
-      itemsContainer.innerHTML = `<div class='no-items'>✨ No products found. Please refresh.</div>`;
-      return;
-    }
-    
-    let html = "";
-    for (let item of allProducts) {
-      // image path: uses item.image (e.g., "1.jpg")
-      // onerror fallback to a elegant placeholder if the file not found on desktop
-      html += `
-        <div class="item-card">
-          <img class="item-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://placehold.co/600x400/F4EFE6/8B7355?text=Image+Not+Found&font=poppins'">
-          <div class="item-info">
-            <div class="item-title">${escapeHtml(item.title)}</div>
-            <div class="item-desc">${escapeHtml(item.description)}</div>
-            <button class="buy-btn" data-id="${item.id}" data-title="${escapeHtml(item.title)}">🛍️ Buy Now via WhatsApp</button>
-          </div>
-        </div>
-      `;
-    }
-    itemsContainer.innerHTML = html;
-    
-    // attach event listeners to all buy buttons
-    const buyButtons = document.querySelectorAll(".buy-btn");
-    buyButtons.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const prodId = btn.getAttribute("data-id");
-        const prodTitle = btn.getAttribute("data-title");
-        sendWhatsApp(prodTitle, prodId);
-      });
-    });
   }
 
   function escapeHtml(str) {
@@ -519,7 +592,36 @@
     });
   }
 
-  // PAGE NAVIGATION LOGIC
+  function renderAllItems() {
+    if (!allProducts.length) {
+      itemsContainer.innerHTML = `<div class='no-items'>✨ No products found. Please refresh.</div>`;
+      return;
+    }
+    let html = "";
+    for (let item of allProducts) {
+      html += `
+        <div class="item-card">
+          <img class="item-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://placehold.co/600x400/F4EFE6/8B7355?text=Image+Not+Found&font=poppins'">
+          <div class="item-info">
+            <div class="item-title">${escapeHtml(item.title)}</div>
+            <div class="item-desc">${escapeHtml(item.description)}</div>
+            <button class="buy-btn" data-id="${item.id}" data-title="${escapeHtml(item.title)}">🛍️ Buy Now via WhatsApp</button>
+          </div>
+        </div>
+      `;
+    }
+    itemsContainer.innerHTML = html;
+    const buyButtons = document.querySelectorAll(".buy-btn");
+    buyButtons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const prodId = btn.getAttribute("data-id");
+        const prodTitle = btn.getAttribute("data-title");
+        sendWhatsApp(prodTitle, prodId);
+      });
+    });
+  }
+
   function showPage(pageId) {
     homePage.classList.remove("active-page");
     itemsPage.classList.remove("active-page");
@@ -529,8 +631,7 @@
     if (pageId === "home") homePage.classList.add("active-page");
     if (pageId === "items") {
       itemsPage.classList.add("active-page");
-      // render items each time when items page opens (ensures fresh view)
-      renderAllItems();
+      renderAllItems();     // refresh items each time
     }
     if (pageId === "about") aboutPage.classList.add("active-page");
     if (pageId === "contact") contactPage.classList.add("active-page");
@@ -553,15 +654,11 @@
     });
   }
 
-  // initial load: set default home page, but items will render when visited
   function init() {
     bindNavigation();
-    // pre-render not required but we can still prepare data
-    // Show homepage by default
     showPage("home");
+    // pre-fetch nothing else, items render on demand
   }
-
-  // small pre-check: if there is any hash or default, but fine.
   init();
 </script>
 </body>
