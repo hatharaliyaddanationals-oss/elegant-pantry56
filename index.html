@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Elegant Pantry | Gold & Blue Collection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+      background: #FEFCF5;
+      color: #1E2A3E;
+      line-height: 1.5;
+    }
+
+    /* Gold & Blue Theme */
+    :root {
+      --gold: #C9A03D;
+      --gold-light: #E9C889;
+      --gold-dark: #A67C1E;
+      --blue: #1E4A76;
+      --blue-light: #2C628C;
+      --blue-soft: #EEF3FC;
+      --cream-bg: #FEF9EF;
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.03);
+      --shadow-md: 0 20px 30px -12px rgba(0,0,0,0.08);
+    }
+
+    /* Header & Navigation */
+    .header {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FEF7E6 100%);
+      border-bottom: 4px solid var(--gold);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .logo-area {
+      padding: 24px 0 8px 0;
+      text-align: center;
+    }
+
+    .logo-area h1 {
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      border-bottom: 3px dashed var(--gold);
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .logo-area span {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 0 20px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 8px 24px;
+      cursor: pointer;
+      border-radius: 40px;
+      transition: all 0.25s ease;
+      color: var(--blue);
+      font-family: inherit;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .nav-btn:hover {
+      background: var(--gold-light);
+      color: #1E2A3E;
+      transform: translateY(-2px);
+    }
+
+    .nav-btn.active {
+      background: var(--gold);
+      color: white;
+      box-shadow: 0 4px 12px rgba(201,160,61,0.3);
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+      animation: fade 0.35s ease;
+      padding: 20px 0 60px;
+    }
+
+    .page.active-page {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* About & Contact Cards */
+    .about-card, .contact-card {
+      background: white;
+      border-radius: 32px;
+      padding: 42px 36px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid #F0E5D2;
+      margin: 20px 0;
+    }
+
+    .about-card h2, .contact-card h2 {
+      color: var(--blue);
+      border-left: 6px solid var(--gold);
+      padding-left: 22px;
+      margin-bottom: 24px;
+      font-size: 1.9rem;
+    }
+
+    /* Items Grid */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 32px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .item-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 1px solid #EDE2CF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+      border-color: var(--gold-light);
+    }
+
+    .item-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #F3EFE5;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .item-card:hover .item-img {
+      transform: scale(1.02);
+    }
+
+    .item-info {
+      padding: 22px 20px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .item-desc {
+      color: #4A5B6E;
+      font-size: 0.9rem;
+      margin: 12px 0 16px;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .buy-btn {
+      background: linear-gradient(95deg, var(--blue) 0%, #143b5c 100%);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 0;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      margin-top: 12px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .buy-btn:hover {
+      background: linear-gradient(95deg, var(--gold-dark) 0%, #b8860b 100%);
+      transform: scale(1.01);
+      box-shadow: 0 8px 18px rgba(201,160,61,0.3);
+    }
+
+    .buy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .no-items {
+      text-align: center;
+      background: #FAF7F0;
+      padding: 70px;
+      border-radius: 48px;
+      color: #7F6E56;
+      font-style: italic;
+    }
+
+    /* info note */
+    .info-note {
+      background: #F0EDE5;
+      border-radius: 24px;
+      padding: 16px 24px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #4F3E2E;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      border-top: 1px solid #E2DACB;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #6A5C48;
+      background: #FEFCF5;
+    }
+
+    @media (max-width: 680px) {
+      .container { padding: 0 18px; }
+      .nav-btn { padding: 6px 16px; font-size: 0.85rem; }
+      .logo-area h1 { font-size: 1.8rem; }
+      .items-grid { gap: 20px; }
+      .about-card, .contact-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <div class="logo-area">
+      <h1>ELEGANT PANTRY <span>& SOLUTION</span></h1>
+    </div>
+    <nav>
+      <button class="nav-btn" data-page="home">HOME</button>
+      <button class="nav-btn" data-page="items">ITEMS</button>
+      <button class="nav-btn" data-page="about">ABOUT</button>
+      <button class="nav-btn" data-page="contact">CONTACT</button>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <!-- ================= HOME PAGE ================= -->
+  <div id="homePage" class="page active-page">
+    <div class="about-card" style="background: linear-gradient(125deg, #FFF9F0, white);">
+      <h2>Welcome to Elegant Pantry & Solution</h2>
+      <p style="font-size:1.2rem; margin-bottom:20px;">Timeless sophistication for your kitchen & pantry. Discover our curated collection where <span style="color:var(--gold); font-weight:600;">gold elegance</span> meets <span style="color:var(--blue); font-weight:600;">blue serenity</span>.</p>
+      <div style="display:flex; gap:24px; flex-wrap:wrap; margin:30px 0 20px;">
+        <div style="flex:1; min-width:170px; background:#F4F0E8; border-radius:32px; padding:24px; text-align:center;"><span style="font-size:2.2rem;">🍯</span><h3 style="margin:12px 0 6px; color:var(--blue);">Pantry</h3><p>Organic spices, oils, jars & gourmet storage</p></div>
+        <div style="flex:1; min-width:170px; background:#F4F0E8; border-radius:32px; padding:24px; text-align:center;"><span style="font-size:2.2rem;">🍳</span><h3 style="margin:12px 0 6px; color:var(--blue));">Kitchen</h3><p>Premium cookware & beautiful tools</p></div>
+        <div style="flex:1; min-width:170px; background:#F4F0E8; border-radius:32px; padding:24px; text-align:center;"><span style="font-size:2.2rem;">✨</span><h3 style="margin:12px 0 6px; color:var(--blue);">Dual Purpose</h3><p>Essentials for modern homes</p></div>
+      </div>
+      <div style="background:#EADFCD30; border-radius:28px; padding:18px; margin-top:15px; text-align:center;"><strong>💎 Gold & Blue Collection</strong> — Elevate your culinary space</div>
+    </div>
+  </div>
+
+  <!-- ================= ITEMS PAGE (NO CATEGORY FILTERS, ALL ITEMS IN SINGLE GRID) ================= -->
+  <div id="itemsPage" class="page">
+    <!-- Removed category tabs: only all items together -->
+    <div id="itemsContainer" class="items-grid">
+      <div class="no-items">Loading elegant collection...</div>
+    </div>
+    <div class="info-note">
+      💡 <strong>Quick order:</strong> Click "Buy Now" on any item → automatically opens WhatsApp with product details to <strong>+94 77 9186182</strong>. You can customize your message! <br>
+      🖼️ <strong>Image tip:</strong> Product images are loaded from <strong>1.jpg</strong> to <strong>30.jpg</strong> (place them in same folder as this webpage). If an image is missing, a placeholder appears.
+    </div>
+  </div>
+
+
+
+  <!-- ================= ABOUT PAGE (ENHANCED with Board Categories & Countries) ================= -->
+  <div id="aboutPage" class="page">
+    <div class="about-card">
+      <h2>About Elegant Pantry & Solution</h2>
+      <p style="font-size:1.05rem; margin-bottom:24px;">Our elegant pantry & solution business offers not only premium pantry and kitchen items but also high-quality engineered board solutions for modern interiors. We merge style, durability, and function — inspired by gold elegance and blue serenity.</p>
+      
+      <!-- Board categories section: main bullet list -->
+      <div class="about-section">
+        <div class="section-title">📋 Board Categories</div>
+        <ul class="bullet-list">
+          <li><span class="gold-highlight">Eco Board</span> – Sustainable, lightweight, and eco-friendly panels perfect for cabinets and modular furniture.</li>
+          <li><span class="gold-highlight">HDF Melamine Board</span> – High-density fiberboard with melamine coating, scratch-resistant and ideal for kitchen shelves & pantry systems.</li>
+          <li><span class="gold-highlight">AGT Board</span> – Advanced grade technology board, water-resistant and premium finish for long-lasting elegance.</li>
+        </ul>
+      </div>
+
+      <!-- Important Countries as a sub-category under board categories (second bullet hierarchy) -->
+      <div class="about-section">
+        <div class="section-title">🌍 Important Partner Countries</div>
+        <ul class="bullet-list">
+          <li>
+            Italy
+            <ul class="sub-bullet">
+              <li>Finest design inspiration & premium finishing standards</li>
+            </ul>
+          </li>
+          <li>
+            China
+            <ul class="sub-bullet">
+              <li>Advanced manufacturing & innovative board technology</li>
+            </ul>
+          </li>
+          <li>
+            Indian
+            <ul class="sub-bullet">
+              <li>Rich craftsmanship & sustainable raw material sourcing</li>
+            </ul>
+          </li>
+        </ul>
+        <!-- subtle note: international collaboration -->
+        <p style="margin-top: 16px; font-size: 0.9rem; background: #F6F2EA; padding: 12px 20px; border-radius: 32px;">
+          🌟 <strong>Global excellence:</strong> Our boards are sourced or inspired by techniques from Italy, China, and India — ensuring world-class quality for your pantry & living spaces.
+        </p>
+      </div>
+
+      <!-- Additional elegant message (keep original vibe) -->
+      <div style="margin-top: 28px; border-top: 1px solid #E8DEC9; padding-top: 24px;">
+        <p style="color: #4A5B6E;">✨ From pantry shelving to kitchen cabinetry, we offer tailored board solutions that blend beauty with strength. Whether you need <strong>Eco Board</strong>, <strong>HDF Melamine</strong>, or <strong>AGT Board</strong>, our international partnerships (Italy, China, India) guarantee superior quality.</p>
+      </div>
+    </div>
+  </div
+
+  <!-- ================= CONTACT PAGE ================= -->
+  <div id="contactPage" class="page">
+    <div class="contact-card">
+      <h2>Connect With Us</h2>
+      <div class="contact-info">
+        <p><strong>📍 Email:</strong> elegantpantry@gmail.com</p>
+        <p><strong>📞  WhatsApp:</strong> +94 77 918 6182</p>   
+	<p><strong>📞 Phone :</strong> 076 775 6811</p>
+        <p><strong>🏠 Address:</strong> Elegant Pantry & solution, 61/5 awasa RD, KIRIGAMPAMUNUWA,POLGASOWITA</p>
+        <p><strong>⏰ Hours:</strong> Mon - Sat: 8:00 AM to 7:00 PM</p>
+        <div style="margin-top:32px;"><a href="https://wa.me/94779186182" target="_blank" style="background:var(--blue); color:white; padding:12px 28px; border-radius:60px; text-decoration:none; display:inline-block; font-weight:600;">Chat on WhatsApp →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 ELEGANT PANTRY & SOLUTION— Gold & Blue Elegance. Luxury  pantry essentials.
+</footer>
+
+<script>
+  // ----------------------------------------------
+  // ELEGANT PANTRY - ALL PRODUCTS (NO CATEGORY FILTERS)
+  // Generates 30 products with image names 1.jpg through 30.jpg
+  // Each image corresponds to your desktop photos renamed 1-30.
+  // ----------------------------------------------
+  const WHATSAPP_NUMBER = "94779186182";
+
+  // Helper: generate 30 elegant product titles & descriptions (rich variety)
+  function generateProducts() {
+    const productNames = [
+      "PROUDUCT 1", "PROUDUCT 2", "PROUDUCT 3", "PROUDUCT 4", "PROUDUCT 5",
+      "PROUDUCT 6", "PROUDUCT 7", "PROUDUCT 8 ", "PROUDUCT 9", "PROUDUCT 10",
+      "PROUDUCT 11", "PROUDUCT 12", "PROUDUCT 13", "PROUDUCT 14", "PROUDUCT 15",
+      "PROUDUCT 16", "PROUDUCT 17", "PROUDUCT 18", "PROUDUCT 19", "PROUDUCT 20",
+      "PROUDUCT 21", "PROUDUCT 22", "PROUDUCT 23", "PROUDUCT 24", "PROUDUCT 25",
+      "PROUDUCT 26", "PROUDUCT 27", "PROUDUCT 28", "PROUDUCT 29", "PROUDUCT 30"
+    ];
+    
+    const descList = [
+      "Premium airtight with gold accents, keeps spices aromatic for months.",
+      "Non-stick coating, durable, perfect for everyday healthy cooking.",
+      "Natural marble with gold base, ideal for pastry and charcuterie.",
+      "Set of 3 blue tinted jars, vacuum sealed, modern pantry style.",
+      "Elegant 1.5L kettle, gold handle, quick boil, stovetop safe.",
+      "Stainless steel with 24k gold finish, accurate measurement set.",
+      "Ceramic airtight canisters, gold lids, perfect for coffee & tea.",
+      "Hand-carved olive wood, rich grain, restaurant grade serving bowl.",
+      "Glass bottle with gold pourer, oil & vinegar duo set.",
+      "High-carbon steel knife, blue titanium coating, razor sharp edge.",
+      "Set of 4 honeycomb design jars, bamboo lids, pantry essential.",
+      "Heavy-duty linen bag, gold embroidery, reusable shopping tote.",
+      "Traditional carbon steel wok, blue exterior, rapid heating.",
+      "Luxury dinner plates with gleaming gold rim, dishwasher safe.",
+      "Glass fermentation set with weights, pickle & kimchi maker.",
+      "Copper-plated teapot, keeps tea hot, vintage inspired.",
+      "Bamboo organizer with gold accent, holds 8+ utensils.",
+      "Solid granite pestle & mortar, sapphire blue stone look.",
+      "Ceramic salt cellar with gold spoon, moisture-resistant seal.",
+      "Adjustable apron, navy blue fabric, gold 'Elegant Pantry' text.",
+      "Manual citrus juicer, gold finish, easy squeeze mechanism.",
+      "Pre-seasoned cast iron skillet, 26cm, excellent heat retention.",
+      "Acacia wood cutting board, juice groove, reversible style.",
+      "Wall-mounted spice rack with 12 glass jars and gold labels.",
+      "Porcelain creamer and sugar bowl set, gold trim, gift box.",
+      "Borosilicate glass mug with stainless steel infuser and lid.",
+      "Set of 4 large preserving jars, hermetic seal, pantry ready.",
+      "Ergonomic pastry blender, gold handle, stainless blades.",
+      "Chalkboard pantry labels with gold marker, 30 stickers set.",
+      "Stoneware butter dish with wooden lid, keeps butter fresh."
+    ];
+    
+    // create exactly 30 products, each mapped to image "i.jpg" (1 to 30)
+    const products = [];
+    for (let i = 1; i <= 30; i++) {
+      // cycle titles and descriptions gracefully
+      const titleIndex = (i - 1) % productNames.length;
+      const descIndex = (i - 1) % descList.length;
+      let title = productNames[titleIndex];
+      let baseDesc = descList[descIndex];
+      // add little unique variation
+      const customDesc = `${baseDesc} ✨ Elegant Pantry & solutions. Perfect for gold & blue style .`;
+      products.push({
+        id: i,
+        title: title,
+        description: customDesc,
+        image: `${i}.jpg`,        // uses 1.jpg, 2.jpg, ... 30.jpg from your desktop folder
+        // no category field anymore (all items together)
+      });
+    }
+    return products;
+  }
+
+  let allProducts = generateProducts();     // 30 items with local images 1.jpg - 30.jpg
+  let itemsContainer = document.getElementById("itemsContainer");
+  const homePage = document.getElementById("homePage");
+  const itemsPage = document.getElementById("itemsPage");
+  const aboutPage = document.getElementById("aboutPage");
+  const contactPage = document.getElementById("contactPage");
+  const navBtns = document.querySelectorAll(".nav-btn");
+
+  // WhatsApp handler
+  function sendWhatsApp(productTitle, productId) {
+    const message = `Hello Elegant Pantry! 👋 I'm interested in purchasing *${productTitle}* (Item #${productId}). Please share price, availability, and payment options. Thank you! 🌟`;
+    const encodedMsg = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+    window.open(whatsappUrl, "_blank");
+  }
+
+  // Render all 30 items in a single grid (no filtering)
+  function renderAllItems() {
+    if (!allProducts.length) {
+      itemsContainer.innerHTML = `<div class='no-items'>✨ No products found. Please refresh.</div>`;
+      return;
+    }
+    
+    let html = "";
+    for (let item of allProducts) {
+      // image path: uses item.image (e.g., "1.jpg")
+      // onerror fallback to a elegant placeholder if the file not found on desktop
+      html += `
+        <div class="item-card">
+          <img class="item-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://placehold.co/600x400/F4EFE6/8B7355?text=Image+Not+Found&font=poppins'">
+          <div class="item-info">
+            <div class="item-title">${escapeHtml(item.title)}</div>
+            <div class="item-desc">${escapeHtml(item.description)}</div>
+            <button class="buy-btn" data-id="${item.id}" data-title="${escapeHtml(item.title)}">🛍️ Buy Now via WhatsApp</button>
+          </div>
+        </div>
+      `;
+    }
+    itemsContainer.innerHTML = html;
+    
+    // attach event listeners to all buy buttons
+    const buyButtons = document.querySelectorAll(".buy-btn");
+    buyButtons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const prodId = btn.getAttribute("data-id");
+        const prodTitle = btn.getAttribute("data-title");
+        sendWhatsApp(prodTitle, prodId);
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === "&") return "&amp;";
+      if (m === "<") return "&lt;";
+      if (m === ">") return "&gt;";
+      return m;
+    });
+  }
+
+  // PAGE NAVIGATION LOGIC
+  function showPage(pageId) {
+    homePage.classList.remove("active-page");
+    itemsPage.classList.remove("active-page");
+    aboutPage.classList.remove("active-page");
+    contactPage.classList.remove("active-page");
+
+    if (pageId === "home") homePage.classList.add("active-page");
+    if (pageId === "items") {
+      itemsPage.classList.add("active-page");
+      // render items each time when items page opens (ensures fresh view)
+      renderAllItems();
+    }
+    if (pageId === "about") aboutPage.classList.add("active-page");
+    if (pageId === "contact") contactPage.classList.add("active-page");
+
+    navBtns.forEach(btn => {
+      if (btn.getAttribute("data-page") === pageId) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  }
+
+  function bindNavigation() {
+    navBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const page = btn.getAttribute("data-page");
+        showPage(page);
+      });
+    });
+  }
+
+  // initial load: set default home page, but items will render when visited
+  function init() {
+    bindNavigation();
+    // pre-render not required but we can still prepare data
+    // Show homepage by default
+    showPage("home");
+  }
+
+  // small pre-check: if there is any hash or default, but fine.
+  init();
+</script>
+</body>
+</html>
